@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-// import jobs from './store/jobs'
 import api from '../libraries/jobs'
+// import api from '../libraries/jsonboxjobs'
 
 Vue.use(Vuex)
 
@@ -11,7 +11,8 @@ export default new Vuex.Store({
     allJobs: [],
     usersJobs: [],
     currentJob: {},
-    notifications: []
+    notifications: [],
+    deliveryTypes: []
   },
   mutations: {
     setAllJobs: (state, data) => {
@@ -32,14 +33,14 @@ export default new Vuex.Store({
   },
   actions: {
     async fetchAllJobs({ commit }, data) {
-      const res = await api.fetchAllJobs(data)
-      commit('setAllJobs', res)
-      return res
+      const jobs = await api.fetchAllJobs(data)
+      commit('setAllJobs', jobs)
+      return jobs
     },
     async fetchUsersJobs({ commit }, data) {
-      const res = await api.fetchUsersJobs(data)
-      commit('setUsersJobs', res)
-      return res
+      const jobs = await api.fetchUsersJobs(data)
+      commit('setUsersJobs', jobs)
+      return jobs
     },
     async createJob({ commit }, data) {
       return await api.createJob(data)
@@ -60,9 +61,9 @@ export default new Vuex.Store({
     },
     async removeNotification({ commit }, data) {
       commit('removeNotification', data)
+    },
+    async readScooters({ commit }, data) {
+      return await api.readScooters(data)
     }
-  } /* ,
-  modules: {
-    jobs
-  }*/
+  }
 })

@@ -12,7 +12,7 @@
       </v-row>
       <div class="py-2">{{ `${job.title} - ${job.fee}€` }}</div>
       <div v-if="job.srcAdress" class="pt-2">{{ `From: ${job.srcAdress.lat}, ${job.srcAdress.lon}` }}</div>
-      <div v-if="job.destAdress"  class="pb-2">{{ `To: ${job.destAdress.lat}, ${job.destAdress.lon}` }}</div>
+      <div v-if="job.dstAdress"  class="pb-2">{{ `To: ${job.dstAdress.lat}, ${job.dstAdress.lon}` }}</div>
       <div>{{ job.description }}</div>
     </v-card>
     <div class="d-flex justify-end mt-6">
@@ -29,21 +29,6 @@
 <script>
 
 export default {
-  components: {
-  },
-
-  data:() => ({
-    // job: {
-    //   id: 1,
-    //   title: 'Help me renovate ',
-    //   fee: 25,
-    //   source: 51.3,
-    //   destination: 8.3,
-    //   srcAdress: 'Citybäcker, Am Kai 16, 44263 Dortmund',
-    //   destAdress: 'Adesso, Adessoplatz 1, 44269 Dortmund',
-    //   description: 'Help me renovate Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.!',
-    // }
-  }),
   computed: {
     job() {
       return this.$store.state.currentJob
@@ -59,7 +44,9 @@ export default {
     onBack() {
       this.$router.push({name: 'jobs'})
     },
-    onAcceptJob() {
+    async onAcceptJob() {
+      const notification = { message: `Successfully created a user`, type: 'success' }
+      await this.$store.dispatch('addNotification', notification)
       this.$router.push({name: 'jobs'})
     },
   }

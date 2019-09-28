@@ -19,15 +19,14 @@
         <v-divider></v-divider>
         <adress class="src-adress" v-model="srcAdress"></adress>
         <v-divider></v-divider>
-        <adress class="dest-adress" v-model="destAdress"></adress>
+        <adress class="dest-adress" v-model="dstAdress"></adress>
         <v-divider></v-divider>
 
-        <!--<v-text-field v-model="phone"
+        <v-text-field v-model="phone"
                       class="pt-6"
                       label="Phone"
                       number
-                      required/>-->
-
+                      required/>
         <v-row>
           <v-col>
             <v-select
@@ -45,13 +44,6 @@
           </v-col>
         </v-row>
 
-        <!--<v-checkbox
-          v-model="checkbox"
-          :rules="[v => !!v || 'You must agree to continue!']"
-          label="Do you agree?"
-          required
-        ></v-checkbox>-->
-
         <div class="d-flex justify-end">
           <v-btn color="error" class="mr-4" @click="onCancel">
             Cancel
@@ -60,17 +52,6 @@
             Create Job
           </v-btn>
         </div>
-
-
-        <v-snackbar top v-model="notification.message" :color="notification.type"
-            v-for="(notification, index) in notifications" :key="index">
-          {{ notification.message }}
-          <v-btn color="white" text
-            @click="removeNotification(index)"
-          >
-            <v-icon>mdi-close</v-icon>
-          </v-btn>
-        </v-snackbar>
       </v-form>
     </v-card>
   </v-container>
@@ -86,6 +67,7 @@ export default {
     title: 'Help me renovate!',
     jobType: 'delivery',
     fee: 25,
+    phone: '017612345678',
     srcAdress: {
       lineOne: 'Backwerk',
       street: 'Am Kai',
@@ -95,7 +77,7 @@ export default {
       lat: 4,
       lon: 56
     },
-    destAdress: {
+    dstAdress: {
       lineOne: 'Adesso',
       street: 'Adessoplatz',
       streetNumber: 1,
@@ -112,13 +94,12 @@ export default {
     ],
   }),
   computed: {
-    notifications() {
-      return this.$store.state.notifications
+    userId() {
+      return this.$store.state.userId
     }
   },
   methods: {
     onJobClicked(job) {
-      console.log('onJobClicked: ', job)
       this.$router.push({name: 'job', params: { id: job.id }})
     },
     onCancel() {
@@ -127,18 +108,35 @@ export default {
     async onCreateJob() {
       await this.$store.dispatch('createJob', {
         title: this.title,
+        tokencount: this.fee,
+        src_street: this.srcAdress.street,
+        src_no: this.srcAdress.streetNumber,
+        src_addr_line: this.srcAdress.lineOne,
+        src_zip: this.srcAdress.plz,
+        src_city: this.srcAdress.town,
+        dst_street: this.dstAdress.street,
+        dst_no: this.dstAdress.streetNumber,
+        dst_addr_line: this.dstAdress.lineOne,
+        dst_zip: this.dstAdress.plz,
+        dst_city: this.dstAdress.town,
+        description: this.description,
+        job_type: this.jobType,
+        tokenSet: true,
+        prod_id: 0,
+        cons_id: this.userId || 0,
+      }
+      /*{
+        title: this.title,
         fee: this.fee,
+        phone: this.phone,
         srcAdress: this.srcAdress,
         destAdress: this.destAdress,
         jobType: this.jobType,
         description: 'Help me renovate Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.!',
-      })
+      }*/)
       const notification = { message: `Successfully created a job with title: "${this.title}"`, type: 'success' }
       await this.$store.dispatch('addNotification', notification)
-      this.$router.push({ name: 'my-jobs' })
-    },
-    removeNotification(index) {
-      this.$store.dispatch('removeNotification', index)
+      this.$router.push({ name: 'jobs' })
     },
   }
 };

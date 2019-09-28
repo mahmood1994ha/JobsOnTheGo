@@ -95,12 +95,6 @@ export default {
       immediate: true
     }
   },
-  // computed: {
-  //   deliveryTypeIcon() {
-  //
-  //     return
-  //   }
-  // },
   methods: {
     onJobClicked(job) {
       this.$router.push({name: 'job', params: { jobId: job.jobId }})
@@ -110,6 +104,7 @@ export default {
     },
     onCreateUser() {
       this.$store.dispatch('createUser', { name: 'Konstantin Steinmiller', phone: '123123123' })
+      this.$store.dispatch('readScooters', { lat: '51.50441060000001', lon: '7.526894099999999' })
     },
   }
 };

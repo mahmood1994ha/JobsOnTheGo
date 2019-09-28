@@ -88,6 +88,16 @@
       </v-container>-->
     </v-content>
 
+    <v-snackbar top v-model="notification.message" :color="notification.type"
+                v-for="(notification, index) in notifications" :key="index">
+      {{ notification.message }}
+      <v-btn color="white" text
+             @click="removeNotification(index)"
+      >
+        <v-icon>mdi-close</v-icon>
+      </v-btn>
+    </v-snackbar>
+
     <v-footer app>
       <span>&copy; 2019 by DeliverOnTheGo</span>
     </v-footer>
@@ -95,21 +105,28 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld,
-  },
   props: {
     source: String,
   },
   data: () => ({
     drawer: null,
   }),
+
+  computed: {
+    notifications() {
+      return this.$store.state.notifications
+    }
+  },
   created () {
     this.$vuetify.theme.dark = true
   },
+  methods: {
+    removeNotification(index) {
+      this.$store.dispatch('removeNotification', index)
+    }
+  }
 };
 </script>

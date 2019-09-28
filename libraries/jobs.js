@@ -9,49 +9,61 @@ const api = axios.create({
   }
 })
 
-const userId = 'Konstantin Steinmiller'
+const mapJobData = function (data) {
+  return {
+    title: data.ltitle,
+    jobId: data.jobID,
+    consumerId: data.lConsumerID,
+    channelId: data.lchannelID,
+    producerId: data.lproducerID,
+    description: data.ldescription,
+    srcAdress: {
+      lineOne: data.srcAddressLine,
+      street: data.srcStreet,
+      streetNumber: data.srcStreetNo,
+      plz: data.srcZIP,
+      town: data.srcCity,
+      lat: data.lsrcLat,
+      lon: data.lsrcLong
+    },
+    dstAdress: {
+      lineOne: data.dstAddressLine,
+      street: data.dstStreet,
+      streetNumber: data.dstStreetNo,
+      plz: data.dstZIP,
+      town: data.dstCity,
+      lat: data.ldstLat,
+      lon: data.ldstLong
+    },
+    isJobActive: data.lisActive,
+    isJobAssigned: data.lisAssigned,
+    fee: data.ltokenCount
+  }
+}
+
+const userId = 0
 
 export default {
   fetchAllJobs: async payload => {
     const { data } = await api.get('getjoblist')
-    return data.map(data => ({
-      jobId: data.jobID,
-      consumerId: data.lConsumerID,
-      channelId: data.lchannelID,
-      producerId: data.lproducerID,
-      description: data.ldescription,
-      srcAdress: { lat: data.lsrcLat, lon: data.lsrcLong},
-      destAdress: { lat: data.ldstLat, lon: data.ldstLong},
-      isJobActive: data.lisActive,
-      isJobAssigned: data.lisAssigned,
-      fee: data.ltokenCount
-    }))
+    return data.map(data => (mapJobData(data)))
   },
   fetchUsersJobs: async payload => {
     const { data } = await api.get(`jobs?q=producerId=${data.id}  `)
     return data
   },
   createJob: async data => {
-    const params = `title=${data.title}&src_lat=8.4&src_long=52&dst_lat=7.3&dst_long=51.3&description=${data.description}&tokenSet=true&tokencount=25&prod_id=${userId}&cons_id=${userId}`
-    const res = await api.get(`createjob?${params}`, data)
+    const params = {
+      ...data,
+    }
+    const res = await api.get(`createjob`, { params, ...data})
     console.log('job created: ', res)
     return res
   },
   readJob: async payload => {
     const { data } = await api.get(`queryjob?job_id=${payload.jobId}`)
     console.log('data: ', data)
-    return {
-      jobId: data.jobID,
-      consumerId: data.lConsumerID,
-      channelId: data.lchannelID,
-      producerId: data.lproducerID,
-      description: data.ldescription,
-      srcAdress: { lat: data.lsrcLat, lon: data.lsrcLong},
-      destAdress: { lat: data.ldstLat, lon: data.ldstLong},
-      isJobActive: data.lisActive,
-      isJobAssigned: data.lisAssigned,
-      fee: data.ltokenCount
-    }
+    return mapJobData(data)
   },
   deleteAllJob: async data => {
     const res = await api.delete(`jobs?q=fee:<=25`)
@@ -61,6 +73,12 @@ export default {
   createUser: async data => {
     const params = `usr_name=${data.name}&phone_no=${data.phone}`
     const res = await api.get(`createuser?${params}`, data)
+    console.log('user created: ', res.data.usr_name)
+    return res
+  },
+  readScooters: async data => {
+    const params = `radius=1000&lat=${data.lat}&long=${data.lon}`
+    const res = await api.get(`vehicles?${params}`, data)
     console.log('user created: ', res.data.usr_name)
     return res
   },
