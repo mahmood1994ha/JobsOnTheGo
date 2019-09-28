@@ -1,11 +1,14 @@
 package backend.interfaces;
 
+import org.springframework.web.bind.annotation.RequestParam;
+
 public class Job {
 	//fields required by FE
 	double lsrcLat;
 	double lsrcLong;
 	double ldstLat;
 	double ldstLong;
+	String ltitle;
 	String ldescription;
 	int ltokenCount;
 	String lproducerID;
@@ -14,7 +17,25 @@ public class Job {
 	boolean lisActive;
 	boolean lisAssigned;
 	String jobID;
-	String ltitle;
+	String srcStreet;
+	int srcStreetNo; 
+	int srcZIP;
+	String srcAddressLine;
+	String srcCity;
+	String dstStreet; 
+	int dstStreetNo;
+	int dstZIP;
+	String dstAddressLine;
+	String dstCity; 
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//constructor with defaults 
 	public Job(){
 		this.lsrcLat = 0;
@@ -38,7 +59,17 @@ public class Job {
 			int tokenCount,
 			String producerID,
 			String ConsumerID,
-			String channelID, long id){
+			String channelID, long id,
+			String srcStreet,
+			int srcStreetNo, 
+			int srcZIP,
+			String srcAddressLine,
+			String srcCity,
+			String dstStreet, 
+			int dstStreetNo,
+			int dstZIP,
+			String dstAddressLine,
+			String dstCity){
 		this.lsrcLat = srcLat;
 		this.lsrcLong = srcLong;
 		this.ldstLat = dstLat;
@@ -55,8 +86,84 @@ public class Job {
 		this.lchannelID = new String ("").concat(channelID);
 		this.jobID = new String(Long.toString(id));
 		this.lisActive = true;
+		this.srcStreet = srcStreet;
+		this.srcStreetNo = srcStreetNo; 
+		this.srcZIP = srcZIP;
+		this.srcAddressLine = srcAddressLine;
+		this.srcCity = srcCity;
+		this.dstStreet = dstStreet; 
+		this.dstStreetNo =  dstStreetNo;
+		this.dstZIP = dstZIP;
+		this.dstAddressLine =  dstAddressLine;
+		this.dstCity = dstCity;
 	}
 
+	public String getLtitle() {
+		return ltitle;
+	}
+	public void setLtitle(String ltitle) {
+		this.ltitle = ltitle;
+	}
+	public String getSrcStreet() {
+		return srcStreet;
+	}
+	public void setSrcStreet(String srcStreet) {
+		this.srcStreet = srcStreet;
+	}
+	public int getSrcStreetNo() {
+		return srcStreetNo;
+	}
+	public void setSrcStreetNo(int srcStreetNo) {
+		this.srcStreetNo = srcStreetNo;
+	}
+	public int getSrcZIP() {
+		return srcZIP;
+	}
+	public void setSrcZIP(int srcZIP) {
+		this.srcZIP = srcZIP;
+	}
+	public String getSrcAddressLine() {
+		return srcAddressLine;
+	}
+	public void setSrcAddressLine(String srcAddressLine) {
+		this.srcAddressLine = srcAddressLine;
+	}
+	public String getSrcCity() {
+		return srcCity;
+	}
+	public void setSrcCity(String srcCity) {
+		this.srcCity = srcCity;
+	}
+	public String getDstStreet() {
+		return dstStreet;
+	}
+	public void setDstStreet(String dstStreet) {
+		this.dstStreet = dstStreet;
+	}
+	public int getDstStreetNo() {
+		return dstStreetNo;
+	}
+	public void setDstStreetNo(int dstStreetNo) {
+		this.dstStreetNo = dstStreetNo;
+	}
+	public int getDstZIP() {
+		return dstZIP;
+	}
+	public void setDstZIP(int dstZIP) {
+		this.dstZIP = dstZIP;
+	}
+	public String getDstAddressLine() {
+		return dstAddressLine;
+	}
+	public void setDstAddressLine(String dstAddressLine) {
+		this.dstAddressLine = dstAddressLine;
+	}
+	public String getDstCity() {
+		return dstCity;
+	}
+	public void setDstCity(String dstCity) {
+		this.dstCity = dstCity;
+	}
 	public String getJobID() {
 		return jobID;
 	}

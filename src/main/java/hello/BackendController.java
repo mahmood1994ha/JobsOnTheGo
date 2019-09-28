@@ -1,6 +1,7 @@
 package hello;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,7 +12,9 @@ import backend.interfaces.*;
 import backend.response.CombinedResponse;
 import backend.response.Coordinate;
 import backend.utils.*;
-
+import backend.*;
+import backend.geoutils.APICalls;
+import backend.geoutils.Location;
 @RestController
 public class BackendController {
 	private final AtomicLong counter = new AtomicLong();
@@ -22,36 +25,63 @@ public class BackendController {
 
 	@CrossOrigin(origins = "http://10.4.1.130:8080")
 	@RequestMapping("/createjob")
-	public CombinedResponse createJob(@RequestParam(value = "src_street") String srcStreet,
-			@RequestParam(value = "src_no") int srcStreetNo, @RequestParam(value = "src_zip") int srcZIP,
+	public String createJob(@RequestParam(value = "src_street") String srcStreet,
+			@RequestParam(value = "src_no") int srcStreetNo, 
+			@RequestParam(value = "src_zip") int srcZIP,
 			@RequestParam(value = "src_addr_line") String srcAddressLine,
-			@RequestParam(value = "dst_street") String dstStreet, @RequestParam(value = "dst_no") int dstStreetNo,
-			@RequestParam(value = "dst_zip") int dstZIP, @RequestParam(value = "dst_street") String dstAddressLine,
-			@RequestParam(value = "city") String city, @RequestParam(value = "title") String title,
-			@RequestParam(value = "description") String desc, @RequestParam(value = "delivery_type") String deliveryTpe,
+			@RequestParam(value = "src_city") String srcCity,
+			@RequestParam(value = "dst_street") String dstStreet, 
+			@RequestParam(value = "dst_no") int dstStreetNo,
+			@RequestParam(value = "dst_zip") int dstZIP,
+			@RequestParam(value = "dst_street") String dstAddressLine,
+			@RequestParam(value = "dst_city") String dstCity, 
+			@RequestParam(value = "title") String title,
+			@RequestParam(value = "description") String desc, 
+			@RequestParam(value = "job_type") String deliveryTpe,
 			@RequestParam(value = "tokenSet") boolean isTokenGiven,
 			@RequestParam(value = "tokencount", defaultValue = "0") int tokenCount,
-			@RequestParam(value = "prod_id") String prodID, @RequestParam(value = "cons_id") String conID,
+			@RequestParam(value = "prod_id") String prodID, 
+			@RequestParam(value = "cons_id") String conID,
 			@RequestParam(value = "chan_id", defaultValue = "") String chanID) {
-		CombinedResponse retval = new CombinedResponse();
+		//CombinedResponse retval = new CombinedResponse();
+		String retval = new String();
 		// check IDS for a match
 		boolean isProdRegistered = checkID(prodID);
 		boolean isConsRegistered = checkID(conID);
 		boolean isChanRegistered = checkID(chanID) || chanID.equals("");
 		if (isProdRegistered && isConsRegistered && isChanRegistered) {
-			Coordinate src_coord = calculateCoords(srcStreet, srcStreetNo, srcZIP, city);
-			Coordinate dst_coord = calculateCoords(dstStreet, dstStreetNo, dstZIP, city);
-			Job x = new Job(src_coord.lat,src_coord.lon,dst_coord.lat,dst_coord.lon,String.format(template,
-					title),String.format(template, desc),isTokenGiven,tokenCount,
-					String.format(template, prodID),String.format(template,
-							conID),String.format(template, chanID),counter.getAndIncrement());
-
+			System.out.println(title);
+			Coordinate src_coord = calculateCoords(srcStreet, srcStreetNo, srcZIP, srcCity);
+			Coordinate dst_coord = calculateCoords(dstStreet, dstStreetNo, dstZIP, dstCity);
+			Job x = new Job(src_coord.lat,
+							src_coord.lon,
+							dst_coord.lat,
+							dst_coord.lon,
+							title ,//String.format(template,title),
+							String.format(template, desc),
+							isTokenGiven,tokenCount,
+							String.format(template, prodID),
+							String.format(template,conID),
+							String.format(template, chanID),
+							counter.getAndIncrement()
+							,srcStreet
+							,srcStreetNo 
+							,srcZIP
+							, srcAddressLine
+							, srcCity
+							, dstStreet 
+							, dstStreetNo
+							, dstZIP
+							, dstAddressLine
+							, dstCity);
 			if (x != null) {
 				jobList.add(x);
-				retval = new CombinedResponse(title, deliveryTpe);
+				retval = title + "||"+ deliveryTpe;
+				//retval = new CombinedResponse(title, deliveryTpe);
 			}
 		} else {
-			retval = new CombinedResponse("null", "null");
+			retval = "null" +"||"+"null";
+			//retval = new CombinedResponse("null", "null");
 		}
 		return retval;
 	}
@@ -59,7 +89,8 @@ public class BackendController {
 	private Coordinate calculateCoords(String Street, int streetNo, int zip, String city) {
 		Coordinate retval = new Coordinate();
 		// TODO do something here
-		retval = new Coordinate(1.0, 1.0);
+		Location x = APICalls.AddressToLocation(Integer.toString(streetNo)+Street, city, "germany");		
+		retval = new Coordinate(Double.parseDouble(x.getLatitude()), Double.parseDouble(x.getLongitude()));
 		return retval;
 	}
 
@@ -193,6 +224,15 @@ public class BackendController {
 			retval = new String("");
 			retval += u.getID();
 		}
+		return retval;
+	}
+	//util API
+	@CrossOrigin(origins = "http://10.4.1.130:8080")
+	@RequestMapping("/adress")
+	public ArrayList<String> getAdress(@RequestParam(value = "lat") String lat,
+			@RequestParam(value = "long") String lon) {
+		ArrayList<String> retval = new ArrayList<String>();
+		retval = (ArrayList<String>) APICalls.LocationToAddress(lat, lon);
 		return retval;
 	}
 
