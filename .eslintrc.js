@@ -51,6 +51,7 @@ module.exports = {
 
   settings: {
     'import/resolver': {
+      // commonjs: true,
       node: {
         extensions: ['.js', '.vue']
       },
