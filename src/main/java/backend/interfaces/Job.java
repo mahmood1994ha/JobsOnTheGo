@@ -14,6 +14,7 @@ public class Job {
 	boolean lisActive;
 	boolean lisAssigned;
 	String jobID;
+	String ltitle;
 	//constructor with defaults 
 	public Job(){
 		this.lsrcLat = 0;
@@ -31,16 +32,18 @@ public class Job {
 			double srcLong,
 			double dstLat,
 			double dstLong,
+			String title,
 			String description,
 			boolean isTokenCalculated,
 			int tokenCount,
 			String producerID,
 			String ConsumerID,
-			String channelID){
+			String channelID, long id){
 		this.lsrcLat = srcLat;
 		this.lsrcLong = srcLong;
 		this.ldstLat = dstLat;
 		this.ldstLong = dstLong;
+		this.ltitle = new String(title);
 		this.ldescription = new String ("").concat(description);
 		if (isTokenCalculated == true) {
 			this.ltokenCount = tokenCount;
@@ -50,7 +53,7 @@ public class Job {
 		this.lproducerID = new String ("").concat(producerID);
 		this.lConsumerID = new String ("").concat(ConsumerID);
 		this.lchannelID = new String ("").concat(channelID);
-		this.jobID = new String(producerID.substring(0, 3) + ConsumerID.substring(0, 3) + channelID.substring(0, 3));
+		this.jobID = new String(Long.toString(id));
 		this.lisActive = true;
 	}
 

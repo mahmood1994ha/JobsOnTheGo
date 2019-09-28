@@ -18,10 +18,10 @@ public class User
 		this.phoneNumber = phoneNumber;
 	}
 //ClassConstructor
-public User( String name, long phone)
+public User( String name, long phone, long id)
 	{
 		this.Name=name;
-		this.ID= name + Integer.toString((int) (Math.random()%1000));
+		this.ID= Long.toString(id);
 		this.phoneNumber = phone;
 	}
 public User() {
