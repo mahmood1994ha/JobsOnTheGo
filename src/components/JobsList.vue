@@ -58,7 +58,6 @@ export default {
   }),
   methods: {
     onJobClicked(job) {
-      console.log('onJobClicked: ', job)
       this.$router.push({name: 'job', params: { id: job.id }})
     },
   }

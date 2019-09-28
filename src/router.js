@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import Jobs from './views/Jobs.vue'
 import Job from './views/Job.vue'
+import openJobs from './views/openJobs.vue'
+import myJobs from './views/myJobs.vue'
 import createJob from './views/createJob.vue'
 
 Vue.use(Router)
@@ -19,7 +20,12 @@ export default new Router({
     {
       path: '/jobs',
       name: 'jobs',
-      component: Jobs
+      component: openJobs
+    },
+    {
+      path: '/my-jobs',
+      name: 'my-jobs',
+      component: myJobs
     },
     {
       path: '/job/:id',
@@ -27,7 +33,7 @@ export default new Router({
       component: Job
     },
     {
-      path: '/create-job/:id',
+      path: '/create-job',
       name: 'create-job',
       component: createJob
     }
