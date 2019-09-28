@@ -16,6 +16,22 @@ import java.util.List;
 
 public class APICalls {
 
+    final private static String googleAPIKey = "AIzaSyCyBMJh5H3ajPaAiqEhg8kkT30cNAQc9o4";
+
+
+    public  static void AddressToLocation(String address, String town, String state)
+    {
+        RestTemplate restTemplate = new RestTemplate();
+
+        String url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + ",+" + town + ",+" + state + "&key=" + googleAPIKey;
+
+        Geometry coordinates = restTemplate.getForObject(url, Geometry.class);
+
+        //ResponseEntity<String> result = restTemplate.exchange(url, HttpMethod.GET, null, String.class);
+
+        //System.out.println(result.getBody());
+    }
+
     public static List<Vehicle> getNearestVehicles(int radius, String latitude, String longitude, int count, String token) {
         RestTemplate restTemplate = new RestTemplate();
 
