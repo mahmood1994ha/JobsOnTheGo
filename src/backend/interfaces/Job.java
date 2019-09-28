@@ -26,8 +26,6 @@ public class Job {
 		this.lConsumerID = new String ("");
 		this.lchannelID = new String ("");
 	}
-	
-	
 	//constructor from FE
 	Job(double srcLat,
 			double srcLong,
