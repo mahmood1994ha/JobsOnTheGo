@@ -45,8 +45,10 @@ export default {
       this.$router.push({name: 'jobs'})
     },
     async onAcceptJob() {
-      const notification = { message: `Successfully created a user`, type: 'success' }
+      const notification = { message: `Successfully accepted the job`, type: 'success' }
       await this.$store.dispatch('addNotification', notification)
+
+      await this.$store.dispatch('fetchAllJobs')
       this.$router.push({name: 'jobs'})
     }
   }

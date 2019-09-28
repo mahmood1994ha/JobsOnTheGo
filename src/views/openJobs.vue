@@ -29,7 +29,6 @@ export default {
   }),
   computed: {
     jobsList() {
-      console.log('allJobs: ', this.$store.state.allJobs, this.$store.state)
       return this.$store.state.allJobs
     },
   },

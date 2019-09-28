@@ -136,6 +136,8 @@ export default {
       }*/)
       const notification = { message: `Successfully created a job with title: "${this.title}"`, type: 'success' }
       await this.$store.dispatch('addNotification', notification)
+
+      await this.$store.dispatch('fetchAllJobs')
       this.$router.push({ name: 'jobs' })
     },
   }
