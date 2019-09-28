@@ -1,11 +1,15 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer
-        v-model="drawer"
-        app
-        clipped
-    >
+    <v-navigation-drawer v-model="drawer" app clipped>
       <v-list dense>
+        <v-list-item>
+          <v-list-item-action>
+            <v-icon>mdi-view-dashboard</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title @click="$router.push({name: 'home'})">Home</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
         <v-list-item>
           <v-list-item-action>
             <v-icon>mdi-tools</v-icon>
@@ -14,7 +18,7 @@
             <v-list-item-title @click="$router.push({name: 'jobs'})">Jobs</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item>
+        <!--<v-list-item>
           <v-list-item-action>
             <v-icon>mdi-account</v-icon>
           </v-list-item-action>
@@ -22,7 +26,7 @@
             <v-list-item-title @click="$router.push({name: 'my-jobs'})"
             >My Jobs</v-list-item-title>
           </v-list-item-content>
-        </v-list-item>
+        </v-list-item>-->
         <v-list-item>
           <v-list-item-action>
             <v-icon>mdi-playlist-plus</v-icon>

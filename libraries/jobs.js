@@ -65,11 +65,6 @@ export default {
     console.log('data: ', data)
     return mapJobData(data)
   },
-  deleteAllJob: async data => {
-    const res = await api.delete(`jobs?q=fee:<=25`)
-    console.log('deleted all jobs: ', res, data)
-    return res
-  },
   createUser: async data => {
     const params = `usr_name=${data.name}&phone_no=${data.phone}`
     const res = await api.get(`createuser?${params}`, data)

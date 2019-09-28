@@ -11,6 +11,7 @@ export default new Vuex.Store({
     allJobs: [],
     usersJobs: [],
     currentJob: {},
+    currentUser: {},
     notifications: [],
     deliveryTypes: []
   },
@@ -23,6 +24,9 @@ export default new Vuex.Store({
     },
     setCurrentJob: (state, data) => {
       state.currentJob = data
+    },
+    setCurrentUser: (state, data) => {
+      state.currentUser = data
     },
     addNotification: (state, data) => {
       state.notifications.push(data)
@@ -50,11 +54,11 @@ export default new Vuex.Store({
       commit('setCurrentJob', job)
       return job
     },
-    async deleteAllJob({ commit }, data) {
-      return await api.deleteAllJob(data)
-    },
     async createUser({ commit }, data) {
-      return await api.createUser(data)
+      const res = await api.createUser(data)
+      console.log('res: ', res.data)
+      commit('setCurrentUser', { ...data, id: res.data })
+      return res
     },
     async addNotification({ commit }, data) {
       commit('addNotification', data)

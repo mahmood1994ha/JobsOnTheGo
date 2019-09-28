@@ -48,7 +48,7 @@ export default {
       const notification = { message: `Successfully created a user`, type: 'success' }
       await this.$store.dispatch('addNotification', notification)
       this.$router.push({name: 'jobs'})
-    },
+    }
   }
 };
 </script>
