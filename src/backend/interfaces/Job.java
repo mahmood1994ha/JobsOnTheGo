@@ -14,8 +14,21 @@ public class Job {
 	boolean lisTerminated;
 	boolean lisActive;
 	boolean lisAssigned;
-
-	//constructor 
+	//constructor with defaults 
+	Job(){
+		this.lsrcLat = 0;
+		this.lsrcLong = 0;
+		this.ldstLat = 0;
+		this.ldstLong = 0;
+		this.ldescription = new String ("");
+		this.ltokenCount = 0;
+		this.lproducerID = new String ("");
+		this.lConsumerID = new String ("");
+		this.lchannelID = new String ("");
+	}
+	
+	
+	//constructor from FE
 	Job(double srcLat,
 			double srcLong,
 			double dstLat,
