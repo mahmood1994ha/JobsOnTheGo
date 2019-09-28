@@ -11,11 +11,11 @@ public class Job {
 	String lproducerID;
 	String lConsumerID;
 	String lchannelID;
-	boolean lisTerminated;
 	boolean lisActive;
 	boolean lisAssigned;
+	String jobID;
 	//constructor with defaults 
-	Job(){
+	public Job(){
 		this.lsrcLat = 0;
 		this.lsrcLong = 0;
 		this.ldstLat = 0;
@@ -50,8 +50,16 @@ public class Job {
 		this.lproducerID = new String ("").concat(producerID);
 		this.lConsumerID = new String ("").concat(ConsumerID);
 		this.lchannelID = new String ("").concat(channelID);
+		this.jobID = new String(producerID.substring(0, 3) + ConsumerID.substring(0, 3) + channelID.substring(0, 3));
+		this.lisActive = true;
 	}
 
+	public String getJobID() {
+		return jobID;
+	}
+	public void setJobID(String jobID) {
+		this.jobID = jobID;
+	}
 	public double getLsrcLat() {
 		return lsrcLat;
 	}
@@ -122,14 +130,6 @@ public class Job {
 
 	public void setLchannelID(String lchannelID) {
 		this.lchannelID = lchannelID;
-	}
-
-	public boolean isLisTerminated() {
-		return lisTerminated;
-	}
-
-	public void setLisTerminated(boolean lisTerminated) {
-		this.lisTerminated = lisTerminated;
 	}
 
 	public boolean isLisActive() {

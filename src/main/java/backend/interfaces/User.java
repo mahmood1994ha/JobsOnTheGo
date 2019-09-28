@@ -2,40 +2,45 @@ package backend.interfaces;
 
 public class User 
 {
-	long ID;
+	String ID;
 	String Name;
-	double userlong;
-	double userlat;
+	double currLong;
+	double currLat;
 	boolean current_status;
 	Job curr_job;
+	long phoneNumber = Integer.MAX_VALUE;
 	
 	
-	//ClassConstructor
-public User( String name, long id, double Longitudinal, double Lateral, boolean status)
+	public long getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(long phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+//ClassConstructor
+public User( String name, long phone)
 	{
 		this.Name=name;
-		this.ID=id;
-		this.userlong= Longitudinal;
-		this.userlat=Lateral;
-		this.current_status=status;
+		this.ID= name + Integer.toString((int) (Math.random()%1000));
+		this.phoneNumber = phone;
 	}
 public User() {
-	this.userlat = 0;
-	this.userlong = 0;
+	this.currLat = 0;
+	this.currLong = 0;
 	this.curr_job = new Job();
 	this.Name = new String ();
-	this.ID =0;
+	//this.ID =0;
 	current_status = false;
 }
 
 
 
-public long getID() {
+public String getID() {
 	return ID;
 }
 
 
-public void setID(long iD) {
+public void setID(String iD) {
 	ID = iD;
 }
 
@@ -51,22 +56,22 @@ public void setName(String name) {
 
 
 public double getUserlong() {
-	return userlong;
+	return currLong;
 }
 
 
 public void setUserlong(double userlong) {
-	this.userlong = userlong;
+	this.currLong = userlong;
 }
 
 
 public double getUserlat() {
-	return userlat;
+	return currLat;
 }
 
 
 public void setUserlat(double userlat) {
-	this.userlat = userlat;
+	this.currLat = userlat;
 }
 
 
