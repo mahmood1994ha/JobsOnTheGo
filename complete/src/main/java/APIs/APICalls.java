@@ -1,45 +1,45 @@
-package hello;
-import APIs.APICalls;
-import APIs.Authentication;
-import APIs.Vehicle;
+package APIs;
+
 import com.google.gson.Gson;
-import com.sun.javafx.fxml.builder.URLBuilder;
-import com.sun.org.apache.xml.internal.utils.URI;
-import jdk.nashorn.internal.parser.JSONParser;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.core.ParameterizedTypeReference;
+import com.google.gson.reflect.TypeToken;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
-public class Application {
+public class APICalls {
 
-    private static final Logger log = LoggerFactory.getLogger(Application.class);
+    public static List<Vehicle> getNearestVehicles(int radius, String latitude, String longitude, int count, String token) {
+        RestTemplate restTemplate = new RestTemplate();
 
-    public static void main(String args[]) {
-        //getData("61624a9c-311e-49ab-96d0-29e533d2097f", "13.41053", "52.52437");
+        String url = "https://node.integrations.mock.goflash.com/partner/vehicles/nearest?count=" + Integer.toString(count) + "&lat=" + latitude + "&long=" + longitude + "&radius=" + Integer.toString(radius);
 
-        String tokenStringResult = APICalls.getToken();
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Api-Version", "1.0");
+        headers.add("Authorization", "Bearer " + token);
+
+        HttpEntity<String> request = new HttpEntity<String>(headers);
+
+        ResponseEntity<String> result = restTemplate.exchange(url, HttpMethod.GET, request, String.class);
 
         Gson gson = new Gson();
 
-        Authentication auth = gson.fromJson(tokenStringResult, Authentication.class);
+        System.out.println(result.getBody());
 
-        List<Vehicle> vehicles = APICalls.getNearestVehicles(250, "13.41053", "52.52437", 3, auth.getAccess_token());
+        VehicleResponse vehicles = gson.fromJson(result.getBody(), VehicleResponse.class);
 
+        return vehicles.getVehicles();
 
-
-        //log.info(quote);
     }
 
-    public static void getData(String token, String longitude, String latitude)
+    public static void getBusinesses(String token, String longitude, String latitude)
     {
         RestTemplate restTemplate = new RestTemplate();
 
@@ -77,5 +77,4 @@ public class Application {
 
         return result.getBody();
     }
-
 }
