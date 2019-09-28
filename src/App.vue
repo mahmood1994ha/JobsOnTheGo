@@ -44,7 +44,9 @@
       clipped-left
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title>DeliverOnTheGo</v-toolbar-title>
+      <v-toolbar-title>DeliverOnTheGo
+        <img style="height: 1.5rem; margin-left: 1rem; margin-bottom: -.25rem" src="../public/img/logo.png">
+      </v-toolbar-title>
     </v-app-bar>
 
     <v-content>

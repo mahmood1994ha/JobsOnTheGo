@@ -11,13 +11,18 @@
                    :key="index"
                    @click="onJobClicked(job)">
         <v-list-item-content>
-          <v-list-item-title>{{ `${job.title} - ${job.fee}€` }}</v-list-item-title>
-          <v-list-item-subtitle class="">
-            {{ job.source }} -> {{ job.destination }}
-          </v-list-item-subtitle>
-          <v-list-item-subtitle>
-            {{ job.description }}
-          </v-list-item-subtitle>
+          <div class="d-flex">
+            <div class="flex-grow">
+              <v-list-item-title>{{ `${job.title} - ${job.fee}€` }}</v-list-item-title>
+              <v-list-item-subtitle class="mt-1">
+                {{ `${job.srcAdress.lineOne}, ${job.srcAdress.street} ${job.srcAdress.streetNumber}, ${job.srcAdress.plz} ${job.srcAdress.town} -> ${job.dstAdress.lineOne}, ${job.dstAdress.street} ${job.dstAdress.streetNumber}, ${job.dstAdress.plz} ${job.dstAdress.town}` }}
+              </v-list-item-subtitle>
+              <v-list-item-subtitle class="mt-2">
+                {{ job.description }}
+              </v-list-item-subtitle>
+            </div>
+            <div class="d-flex align-center"><v-icon x-large>mdi-moped</v-icon></div>
+          </div>
         </v-list-item-content>
       </v-list-item>
     </v-card>
