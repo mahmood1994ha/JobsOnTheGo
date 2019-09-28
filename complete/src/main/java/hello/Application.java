@@ -34,7 +34,7 @@ public class Application {
 
         List<Vehicle> vehicles = APICalls.getNearestVehicles(250, "13.41053", "52.52437", 3, auth.getAccess_token());
 
-        APICalls.AddressToLocation("1600 Amphitheatre Parkway", "Mountain View", "California");
+        APICalls.LocationToAddress("106.688451", "10.778411");
 
         //log.info(quote);
     }

@@ -1,7 +1,11 @@
 package APIs;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
+import jdk.nashorn.internal.parser.JSONParser;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -19,17 +23,53 @@ public class APICalls {
     final private static String googleAPIKey = "AIzaSyCyBMJh5H3ajPaAiqEhg8kkT30cNAQc9o4";
 
 
-    public  static void AddressToLocation(String address, String town, String state)
+    public  static Location AddressToLocation(String address, String town, String state)
     {
         RestTemplate restTemplate = new RestTemplate();
 
         String url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + ",+" + town + ",+" + state + "&key=" + googleAPIKey;
 
-        Geometry coordinates = restTemplate.getForObject(url, Geometry.class);
+        //AddressLocationResponse response = restTemplate.getForObject(url, AddressLocationResponse.class);
 
-        //ResponseEntity<String> result = restTemplate.exchange(url, HttpMethod.GET, null, String.class);
+        ResponseEntity<String> result = restTemplate.exchange(url, HttpMethod.GET, null, String.class);
 
-        //System.out.println(result.getBody());
+        JsonObject jsonObject = new JsonParser().parse(result.getBody()).getAsJsonObject();
+
+        JsonObject geometry = jsonObject.getAsJsonArray("results").get(0).getAsJsonObject().getAsJsonObject("geometry");
+
+        String latitude = geometry.getAsJsonObject("location").getAsJsonPrimitive("lat").getAsString();
+        String longitude = geometry.getAsJsonObject("location").getAsJsonPrimitive("lng").getAsString();
+
+        Location location = new Location(latitude, longitude);
+        return location;
+    }
+
+    /**
+     *
+     * @param longitude
+     * @param latitude
+     * @return Returns list of strings with the address fields in order of precision, i.e. : street number then street name, then neighbourhoud, and so On.
+     * Concatenate each item to get full address.
+     */
+    public  static List<String> LocationToAddress(String longitude, String latitude)
+    {
+        RestTemplate restTemplate = new RestTemplate();
+        String url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latitude+ "," + longitude + "&key=" + googleAPIKey;
+
+        ResponseEntity<String> result = restTemplate.exchange(url, HttpMethod.GET, null, String.class);
+
+        JsonObject jsonObject = new JsonParser().parse(result.getBody()).getAsJsonObject();
+
+        JsonArray addressComponent = jsonObject.getAsJsonArray("results").get(0).getAsJsonObject().getAsJsonArray("address_components");
+
+        List<String> addressFields = new ArrayList<>();
+
+        for (int i = 0; i < addressComponent.size(); i++)
+        {
+            addressFields.add(addressComponent.get(i).getAsJsonObject().getAsJsonPrimitive("long_name").getAsString());
+        }
+
+        return addressFields;
     }
 
     public static List<Vehicle> getNearestVehicles(int radius, String latitude, String longitude, int count, String token) {
