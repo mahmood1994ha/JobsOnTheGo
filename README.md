@@ -8,6 +8,8 @@ Posting simple jobs that need to be done in a day or two, finding someone who wi
 
 Connecting small job providers to fast job seekers.
 
+##commit
+
 ## Built with
 //TODO: lists the technologies you use and their purpose
 
