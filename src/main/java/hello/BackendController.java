@@ -24,11 +24,31 @@ public class BackendController {
 							@RequestParam(value="cons_id")String conID,
 							@RequestParam(value="chan_id", defaultValue = "")String chanID){
 		String retval = new String();
-		Job x =  new Job(src_lat,src_long,dst_lat,dst_long,String.format(template, desc),isTokenGiven,tokenCount,
-				String.format(template, prodID),String.format(template, conID),String.format(template, chanID));
-		if (x!=null) {
-			jobList.add(x);
-			retval = new String("OK").concat(x.getJobID());
+		
+		//check IDS for a match
+		boolean isProdRegistered = checkID(prodID);
+		boolean isConsRegistered = checkID(conID);
+		boolean isChanRegistered = checkID(chanID) || chanID.equals("");
+		if (isProdRegistered && isConsRegistered && isChanRegistered) {
+			Job x =  new Job(src_lat,src_long,dst_lat,dst_long,String.format(template, desc),isTokenGiven,tokenCount,
+					String.format(template, prodID),String.format(template, conID),String.format(template, chanID));
+			if (x!=null) {
+				jobList.add(x);
+				retval = x.getJobID();
+			}
+		}else {
+			retval = new String("user(s) don't exist");
+		}
+		return retval;
+	}
+	
+	private boolean checkID(String userID) {
+		boolean retval = false;
+		for (User u : userList) {
+			if (u.getID().equalsIgnoreCase(userID)) {
+				retval = true;
+				break;
+			}
 		}
 		return retval;
 	}
