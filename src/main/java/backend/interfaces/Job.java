@@ -27,7 +27,7 @@ public class Job {
 		this.lchannelID = new String ("");
 	}
 	//constructor from FE
-	Job(double srcLat,
+	public Job(double srcLat,
 			double srcLong,
 			double dstLat,
 			double dstLong,
