@@ -30,7 +30,7 @@ Ahmed Yasser:
 Tien :
 Mahmoud:
 Konstantin:
-Jean:
+Jean: Background mostly on Embedded domain with C/C++ for Microcontrollers and some C# and Java for Desktop and Web applications. 
 
 ## What's next for your project?
 //TODO: is there anything you've planned to work on after this hackathon? you've got some ideas of features to add? 
@@ -39,7 +39,9 @@ We would really like to extend the app to be not only for deliviring stuff but a
 
 Some social jobs also would be great like if someone need help to ask for something install something or need help with some langauge tralslation. so people would be able to say what they actually need and how much they can afford for it. it also could be ofcourse for freeas a scoial contribution.
 ## How does it look?
+![Main Page](/ScreenShots/3.png?raw=true "Main Page")
 ![Job Details](/ScreenShots/1.png?raw=true "Job Details")
+![Add Job](/ScreenShots/2.png?raw=true "Add Job")
 
 ## Anything to add?
 //TODO: add additional information. Is there soemthing you couldn't mention before? Do you have some videos or demos of your project?
