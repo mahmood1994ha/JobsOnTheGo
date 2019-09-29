@@ -13,7 +13,8 @@ Connecting small job providers to fast job seekers.
 
 ## Built with
 //TODO: lists the technologies you use and their purpose
-
+Backend: HTTP protocol with RESTful architechture. Googlegeo API. Spring framework.
+Frontend: 
 ## What benefit will your work bring in smart city context?
 
 When we take about smart cities we are trying to provide everything in a smart way, to protect the enviroment and work towards less traffic. This app is mainly focus on those three pillars.
@@ -27,7 +28,7 @@ When we take about smart cities we are trying to provide everything in a smart w
 ## About your team
 //TODO: describe each team member with their background knowledge
  Markup : * Ahmed Yasser:
-          * Tien:
+          * Tien: Background mostly on Electronics and IT. Speaks C/C++ and Java.
           * Mahmoud:
           * Konstantin:
           * Jean: Background mostly on Embedded domain with C/C++ for Microcontrollers and some C# and Java for Desktop and Web applications. 
