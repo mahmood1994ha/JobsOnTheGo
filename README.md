@@ -9,8 +9,6 @@ Posting simple jobs that need to be done in a day or two, finding someone who wi
 
 Connecting small job providers to fast job seekers.
 
-##commit
-
 ## Built with
 
 Backend: HTTP protocol with RESTful architechture. Googlegeo API. Spring framework.
@@ -24,13 +22,12 @@ When we take about smart cities we are trying to provide everything in a smart w
 3) All this will decrease the traffic so the people won't need to do everything by themself. so less people around ;)
 
 ## What were challenges you encountered and Lessons Learned?
-Could not get GPS data from the web brownser because it requires an secure connection (HTTPS). Using Google map API for solving the problem.  
-Intergration between different sw componets. Version control and work packages that descriped clearly the requirements for solving the problem.   
-Team work plays an important role in the result of the projects.   
+1. Could not get GPS data from the web brownser because it requires an secure connection (HTTPS). Using Google map API for solving the problem.  
+2. Intergration between different sw componets. Version control and work packages that descriped clearly the requirements for solving the problem.   
+3. Team work plays an important role in the result of the projects.   
 
-## About your team
-//TODO: describe each team member with their background knowledge
-       * Ahmed Yasser:  
+## About your team   
+       * Ahmed Yasser:    
        * Tien: Background mostly on Electronics and IT. Speaks C/C++ and Java.  
        * Mahmoud:   
        * Konstantin:   
