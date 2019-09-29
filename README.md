@@ -1,12 +1,10 @@
-# Template Repository
+# Jobs On The Go Repository
 This is a template, please fill it with your teams data. Places to fill in data are marked with a //TODO. If you fail to do so, our jury can't evaluate your project. 
 
 ## Description 
-Simply our idea is to make it easy for everyone to make their deliverables more easier. So basically starting form delivering packages, food or helping people in delivering stuff or transporting them.
+Simply our idea is to make it easy for everyone to make their deliverables more easier. So basically starting form delivering packagies, food or helping people in delivering stuff or transporting them.
 
-With our application, users can post simple jobs that need to be done in a day or two, finding someone who will do it. Connect. Delivered.
-
-We linked with the CIRC API for getting the scooters information around the city. With that we can use the data to recommend the nearest means of transport for the job seekers.
+Posting simple jobs that need to be done in a day or two, finding someone who will do it. Connect. Delivered.
 
 Connecting small job providers to fast job seekers.
 
@@ -14,11 +12,8 @@ Connecting small job providers to fast job seekers.
 
 ## Built with
 //TODO: lists the technologies you use and their purpose
-Backend: HTTP protocal with RESTful architechture.
-Frontend: 
 
 ## What benefit will your work bring in smart city context?
-//TODO: list benefits and tell us your motivation in working on this topic
 
 When we take about smart cities we are trying to provide everything in a smart way, to protect the enviroment and work towards less traffic. This app is mainly focus on those three pillars.
 1) We are trying to make a good network for delivering small stuff.
@@ -31,19 +26,20 @@ When we take about smart cities we are trying to provide everything in a smart w
 ## About your team
 //TODO: describe each team member with their background knowledge
 Ahmed Yasser: 
-Tien : ESM master student at FH Dortmund. Embedded developer.
+Tien :
 Mahmoud:
-Konstantin: 
-Jean:
+Konstantin:
+Jean: Background mostly on Embedded domain with C/C++ for Microcontrollers and some C# and Java for Desktop and Web applications. 
 
 ## What's next for your project?
-//TODO: is there anything you've planned to work on after this hackathon? you've got some ideas of features to add? 
 
 We would really like to extend the app to be not only for deliviring stuff but also for helping people in transporting stuff, or any small help they need. any kind of help or small job.
 
 Some social jobs also would be great like if someone need help to ask for something install something or need help with some langauge tralslation. so people would be able to say what they actually need and how much they can afford for it. it also could be ofcourse for freeas a scoial contribution.
 ## How does it look?
-//TODO: got any screenshots? post them here!
+![Main Page](/ScreenShots/3.png?raw=true "Main Page")
+![Job Details](/ScreenShots/1.png?raw=true "Job Details")
+![Add Job](/ScreenShots/2.png?raw=true "Add Job")
 
 ## Anything to add?
 //TODO: add additional information. Is there soemthing you couldn't mention before? Do you have some videos or demos of your project?
