@@ -31,6 +31,11 @@ When we take about smart cities we are trying to provide everything in a smart w
           * Konstantin:
           * Jean: Background mostly on Embedded domain with C/C++ for Microcontrollers and some C# and Java for Desktop and Web applications. 
 
+
+ Markup : * Bullet list
+              * Nested bullet
+                  * Sub-nested bullet etc
+          * Bullet list item 2
 ## What's next for your project?
 
 We would really like to extend the app to be not only for deliviring stuff but also for helping people in transporting stuff, or any small help they need. any kind of help or small job.
