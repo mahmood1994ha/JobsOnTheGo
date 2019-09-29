@@ -105,7 +105,7 @@ public class BackendController {
 		return retval;
 	}
 
-	@CrossOrigin(origins = "http://10.4.1.130:8080")
+	@CrossOrigin(origins = "*")
 	@RequestMapping("/getjoblist")
 	public ArrayList<Job> getJobList() {
 		ArrayList<Job> retval = new ArrayList<Job>();
@@ -118,7 +118,7 @@ public class BackendController {
 		return retval;
 	}
 
-	@CrossOrigin(origins = "http://10.4.1.130:8080")
+	@CrossOrigin(origins = "*")
 	@RequestMapping("/assignjob")
 	public boolean assignJob(@RequestParam(value = "job_id") String jobID,
 			@RequestParam(value = "chan_id") String chanID) {
@@ -135,7 +135,7 @@ public class BackendController {
 		return retval;
 	}
 
-	@CrossOrigin(origins = "http://10.4.1.130:8080")
+	@CrossOrigin(origins = "*")
 	@RequestMapping("/unassignjob")
 	public boolean unassignJob(@RequestParam(value = "job_id") String jobID) {
 		boolean retval = false;
@@ -151,7 +151,7 @@ public class BackendController {
 		return retval;
 	}
 
-	@CrossOrigin(origins = "http://10.4.1.130:8080")
+	@CrossOrigin(origins = "*")
 	@RequestMapping("/canceljob")
 	public boolean cancelJob(@RequestParam(value = "job_id") String jobID) {
 		boolean retval = false;
@@ -166,7 +166,7 @@ public class BackendController {
 		return retval;
 	}
 
-	@CrossOrigin(origins = "http://10.4.1.130:8080")
+	@CrossOrigin(origins = "*")
 	@RequestMapping("/closejob")
 	public boolean closeJob(@RequestParam(value = "job_id") String jobID) {
 		boolean retval = false;
@@ -181,7 +181,7 @@ public class BackendController {
 		return retval;
 	}
 
-	@CrossOrigin(origins = "http://10.4.1.130:8080")
+	@CrossOrigin(origins = "*")
 	@RequestMapping("/queryjob")
 	public Job queryJob(@RequestParam(value = "job_id") String jobID) {
 		Job retval = new Job();
@@ -195,7 +195,7 @@ public class BackendController {
 		return retval;
 	}
 
-	@CrossOrigin(origins = "http://10.4.1.130:8080")
+	@CrossOrigin(origins = "*")
 	@RequestMapping("/getActivejoblist")
 	public ArrayList<Job> getActiveJobList() {
 		ArrayList<Job> retval = new ArrayList<Job>();
@@ -212,7 +212,7 @@ public class BackendController {
 	}
 
 	// user handler API
-	@CrossOrigin(origins = "http://10.4.1.130:8080")
+	@CrossOrigin(origins = "*")
 	@RequestMapping("/createuser")
 	public String createuser(@RequestParam(value = "usr_name") String name,
 			@RequestParam(value = "phone_no") long phoneNo) {
@@ -226,11 +226,22 @@ public class BackendController {
 		}
 		return retval;
 	}
+	
 	//util API
-	@CrossOrigin(origins = "http://10.4.1.130:8080")
+	@CrossOrigin(origins = "*")
 	@RequestMapping("/adress")
 	public ArrayList<String> getAdress(@RequestParam(value = "lat") String lat,
 			@RequestParam(value = "long") String lon) {
+		ArrayList<String> retval = new ArrayList<String>();
+		retval = (ArrayList<String>) APICalls.LocationToAddress(lat, lon);
+		return retval;
+	}
+
+	@CrossOrigin(origins = "*")
+	@RequestMapping("/vehicles")
+	public ArrayList<String> getveh(@RequestParam(value = "lat") String lat,
+			@RequestParam(value = "long") String lon, @RequestParam(value = "radius") int radius ) {
+		APICalls.getNearestVehicles(radius, lat, lon, 10, APICalls.getToken());
 		ArrayList<String> retval = new ArrayList<String>();
 		retval = (ArrayList<String>) APICalls.LocationToAddress(lat, lon);
 		return retval;
