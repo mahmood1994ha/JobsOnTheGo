@@ -85,7 +85,7 @@ export default {
       return this.$store.state.currentJob
     },
     locations() {
-      return [
+      return (this.job && [
         {
           title: 'From',
           location: {
@@ -108,7 +108,7 @@ export default {
           },
           isMain: false
         }
-      ] || []
+      ]) || []
     }
   },
   created() {
@@ -127,6 +127,19 @@ export default {
 
       await this.$store.dispatch('fetchAllJobs')
       this.$router.push({name: 'jobs'})
+    },
+    requestGeoLocation() {
+      if (navigator.geolocation) {
+        var startPos;
+        var geoSuccess = function(position) {
+          startPos = position;
+          document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+          document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+        };
+        navigator.geolocation.getCurrentPosition(geoSuccess);
+      } else {
+        alert('Geolocation is not supported for this Browser/OS.');
+      }
     }
   }
 };

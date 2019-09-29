@@ -31,6 +31,7 @@
           <v-col>
             <v-select
               v-model="jobType"
+              item-text="label"
               :items="jobTypes"
               :rules="[v => !!v || 'Item is required']"
               label="Job type"
@@ -46,10 +47,10 @@
 
         <div class="d-flex justify-end">
           <v-btn color="error" class="mr-4" @click="onCancel">
-            Cancel
+            <v-icon class="mr-2">mdi-arrow-left</v-icon>Cancel
           </v-btn>
           <v-btn color="success" @click="onCreateJob">
-            Create Job
+            <v-icon class="mr-2">mdi-check</v-icon>Create Job
           </v-btn>
         </div>
       </v-form>
@@ -65,7 +66,7 @@ export default {
   data:() => ({
     valid: true,
     title: 'Help me renovate!',
-    jobType: 'delivery',
+    jobType: { label: 'delivery', value: 'delivery'},
     fee: 25,
     phone: '017612345678',
     srcAdress: {
@@ -120,7 +121,7 @@ export default {
         dst_zip: this.dstAdress.zip,
         dst_city: this.dstAdress.town,
         description: this.description,
-        job_type: this.jobType,
+        job_type: this.jobType.value,
         tokenSet: true,
         prod_id: 0,
         cons_id: this.userId || 0,

@@ -10,7 +10,7 @@ export default new Vuex.Store({
   state: {
     allJobs: [],
     usersJobs: [],
-    currentJob: {},
+    currentJob: { srcAdress: { lat:5, lon:5 }, dstAdress: { lat:5, lon:5 }},
     currentUser: {},
     notifications: [],
     deliveryTypes: []
