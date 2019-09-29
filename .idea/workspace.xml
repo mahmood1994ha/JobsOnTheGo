@@ -2,27 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8eaae3d5-9534-40ff-a182-4c017e723170" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/deliver.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/css/app.885bb66d.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/css/chunk-vendors.e8e57780.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/img/logo.6d07b430.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/img/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/js/app.9cdd3c7a.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/js/app.9cdd3c7a.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/js/chunk-vendors.92f6cddb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/js/chunk-vendors.92f6cddb.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/precache-manifest.ec32afe966a721f913e7972c6e7c7df9.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/robots.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/robots.txt" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/frontend/node_modules/" />
@@ -38,8 +19,8 @@
         <entry file="file://$PROJECT_DIR$/frontend/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="732">
-                <caret line="40" selection-start-line="40" selection-end-line="40" />
+              <first_editor relative-caret-position="584">
+                <caret line="59" column="100" selection-start-line="59" selection-start-column="100" selection-end-line="59" selection-end-column="100" />
               </first_editor>
               <second_editor />
             </state>
@@ -137,7 +118,7 @@
       <option name="presentableId" value="Default" />
       <updated>1569742950153</updated>
       <workItem from="1569742954944" duration="368000" />
-      <workItem from="1569743397930" duration="1841000" />
+      <workItem from="1569743397930" duration="2639000" />
     </task>
     <task id="LOCAL-00001" summary="moving everthing to frontend directory">
       <created>1569743818338</created>
@@ -146,11 +127,32 @@
       <option name="project" value="LOCAL" />
       <updated>1569743818338</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="moving everthing to frontend directory">
+      <created>1569745274081</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1569745274081</updated>
+    </task>
+    <task id="LOCAL-00003" summary="added preview images">
+      <created>1569745308627</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1569745308627</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add preview images to readme">
+      <created>1569745959589</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1569745959589</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2209000" />
+    <option name="totallyTimeSpent" value="3007000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="308" y="0" width="1612" height="1144" extended-state="0" />
@@ -192,7 +194,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="moving everthing to frontend directory" />
-    <option name="LAST_COMMIT_MESSAGE" value="moving everthing to frontend directory" />
+    <MESSAGE value="added preview images" />
+    <MESSAGE value="add preview images to readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="add preview images to readme" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/frontend/img/logo.png">
@@ -207,8 +211,8 @@
     <entry file="file://$PROJECT_DIR$/frontend/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="732">
-            <caret line="40" selection-start-line="40" selection-end-line="40" />
+          <first_editor relative-caret-position="584">
+            <caret line="59" column="100" selection-start-line="59" selection-start-column="100" selection-end-line="59" selection-end-column="100" />
           </first_editor>
           <second_editor />
         </state>
