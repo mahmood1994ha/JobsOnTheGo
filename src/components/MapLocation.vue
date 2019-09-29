@@ -8,21 +8,20 @@
         <div id="map" ref="gMap" class="w-full md:w-128 lg:w-full h-96"></div>
       </div>
       <div class="flex flex-wrap w-full lg:w-1/2 lg:ml-8 mt-6 lg:mt-0">
-        <icon-info
+        <div
           v-for="(location, index) in locations"
           :key="index"
           :is-main-location="location.isMain"
-          to="/home"
-          :class="['self-start w-full p-3 cursor-pointer']"
+          class="self-start w-full p-3 cursor-pointer d-flex"
           @click="onLocationClicked(index)"
         >
-          <template slot="icon" :class="{ 'bg-green': location.isMain }">
-            location_on
-          </template>
+          <v-icon slot="icon" class="mr-2" :class="{ 'bg-green': location.isMain }">
+            mdi-map-marker
+          </v-icon>
 
-          <template slot="info">
+          <div class="flex-grow">
             <div class="inline-block pb-2 mb-1">
-              {{ getLocationLabel(location.isMain) }}
+              {{ location.title }}
             </div>
 
             <template v-if="location.location.addressLineOne">
@@ -35,28 +34,23 @@
                 {{ location.location.addressLineTwo }}
               </div>
             </template>
-            <template
-              v-if="location.location.zipcode || location.location.city"
-            >
+            <template v-if="location.location.zipcode || location.location.city">
               <div class="pb-2">
                 {{ location.location.zipcode }} {{ location.location.city }}
               </div>
             </template>
-          </template>
-        </icon-info>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Vue from 'vue/types'
-import IconInfo from '@/components/molecules/IconInfo'
 import gmapsInit from '../helpers/google-maps'
 const colors = require('../../colors.json')
 
 export default {
-  components: { IconInfo }, // eslint-disable-line
   props: {
     locations: {
       type: Array,
@@ -78,7 +72,7 @@ export default {
     }
   },
   beforeDestroy() {
-    // kill the google maps api object and the dom node so it doesn't get duplicated
+    // remove the google maps api object and the dom node so it doesn't get duplicated
     this.$refs['gMap'] && this.$refs['gMap'].remove()
     window.google = {}
   },
@@ -136,7 +130,7 @@ export default {
     },
     setMarkerZoomBounds() {
       if (this.completeLocations.length) {
-        Vue.nextTick(() => {
+        this.vm.nextTick(() => {
           this.map.fitBounds(this.bounds)
           if (this.map.getZoom() > 16) {
             this.map.setZoom(11)
@@ -164,11 +158,6 @@ export default {
     },
     onLocationClicked(index) {
       this.zoomOntoMarker(this.markers[index])
-    },
-    getLocationLabel(isMain) {
-      return isMain
-        ? this.$t('components.molecules.MapLocation.mainLocation')
-        : this.$t('components.molecules.MapLocation.location')
     }
   }
 }

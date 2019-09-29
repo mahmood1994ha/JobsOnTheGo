@@ -56,7 +56,6 @@ export default new Vuex.Store({
     },
     async createUser({ commit }, data) {
       const res = await api.createUser(data)
-      console.log('res: ', res.data)
       commit('setCurrentUser', { ...data, id: res.data })
       return res
     },

@@ -15,7 +15,7 @@
             <div class="flex-grow">
               <v-list-item-title>{{ `${job.title} - ${job.fee}€` }}</v-list-item-title>
               <v-list-item-subtitle class="mt-1">
-                {{ `${job.srcAdress.lineOne}, ${job.srcAdress.street} ${job.srcAdress.streetNumber}, ${job.srcAdress.zip} ${job.srcAdress.town} -> ${job.dstAdress.lineOne}, ${job.dstAdress.street} ${job.dstAdress.streetNumber}, ${job.dstAdress.zip} ${job.dstAdress.town}` }}
+                <adress-line :src-adress="job.srcAdress" :dst-adress="job.dstAdress"/>
               </v-list-item-subtitle>
               <v-list-item-subtitle class="mt-2">
                 {{ job.description }}
@@ -56,9 +56,10 @@
 </template>
 
 <script>
+import AdressLine from './AdressLine'
 
 export default {
-  components: {},
+  components: { AdressLine },
   props: {
     items: {
       type: Array,

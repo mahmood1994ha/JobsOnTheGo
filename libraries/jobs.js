@@ -57,24 +57,20 @@ export default {
       ...data,
     }
     const res = await api.get(`createjob`, { params, ...data})
-    console.log('job created: ', res)
     return res
   },
   readJob: async payload => {
     const { data } = await api.get(`queryjob?job_id=${payload.jobId}`)
-    console.log('data: ', data)
     return mapJobData(data)
   },
   createUser: async data => {
     const params = `usr_name=${data.name}&phone_no=${data.phone}`
     const res = await api.get(`createuser?${params}`, data)
-    console.log('user created: ', res.data.usr_name)
     return res
   },
   readScooters: async data => {
     const params = `radius=1000&lat=${data.lat}&long=${data.lon}`
     const res = await api.get(`vehicles?${params}`, data)
-    console.log('user created: ', res.data.usr_name)
     return res
   },
 }

@@ -5,8 +5,6 @@ import store from './store'
 import './registerServiceWorker'
 import vuetify from './plugins/vuetify'
 import '../assets/css/tailwind.css'
-// import google from './helpers/google-maps'
-// google()
 
 Vue.config.productionTip = false
 
