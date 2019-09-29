@@ -13,7 +13,8 @@ Connecting small job providers to fast job seekers.
 
 Backend: HTTP protocol with RESTful architechture. Googlegeo API. Spring framework.
 
-Frontend: 
+Frontend: Vue CLI
+
 ## What benefit will your work bring in smart city context?
 
 When we take about smart cities we are trying to provide everything in a smart way, to protect the enviroment and work towards less traffic. This app is mainly focus on those three pillars.
@@ -45,4 +46,4 @@ Some social jobs also would be great like if someone need help to ask for someth
 ![Add Job](/ScreenShots/2.png?raw=true "Add Job")
 
 ## Anything to add?
-//TODO: add additional information. Is there soemthing you couldn't mention before? Do you have some videos or demos of your project?
+Live demo: http://deliver-on-the-go.surge.sh
