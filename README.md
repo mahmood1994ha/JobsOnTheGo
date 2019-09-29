@@ -30,7 +30,7 @@ When we take about smart cities we are trying to provide everything in a smart w
 ## About your team   
        * Ahmed Yasser:    
        * Tien: Background mostly on Electronics and IT. Speaks C/C++ and Java.  
-       * Mahmoud:   
+       * Mahmoud: Background in Real Time Embedded Systems. 
        * Konstantin:   
        * Jean: Background mostly on Embedded domain with C/C++ for Microcontrollers and some C# and Java for Desktop and Web applications.    
 
