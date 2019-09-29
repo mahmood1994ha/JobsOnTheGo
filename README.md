@@ -25,11 +25,11 @@ When we take about smart cities we are trying to provide everything in a smart w
 
 ## About your team
 //TODO: describe each team member with their background knowledge
-Ahmed Yasser: 
-Tien :
-Mahmoud:
-Konstantin:
-Jean: Background mostly on Embedded domain with C/C++ for Microcontrollers and some C# and Java for Desktop and Web applications. 
+ Markup : * Ahmed Yasser:
+          * Tien:
+          * Mahmoud:
+          * Konstantin:
+          * Jean: Background mostly on Embedded domain with C/C++ for Microcontrollers and some C# and Java for Desktop and Web applications. 
 
 ## What's next for your project?
 
