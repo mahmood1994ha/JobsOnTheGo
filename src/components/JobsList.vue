@@ -15,7 +15,7 @@
             <div class="flex-grow">
               <v-list-item-title>{{ `${job.title} - ${job.fee}€` }}</v-list-item-title>
               <v-list-item-subtitle class="mt-1">
-                {{ `${job.srcAdress.lineOne}, ${job.srcAdress.street} ${job.srcAdress.streetNumber}, ${job.srcAdress.plz} ${job.srcAdress.town} -> ${job.dstAdress.lineOne}, ${job.dstAdress.street} ${job.dstAdress.streetNumber}, ${job.dstAdress.plz} ${job.dstAdress.town}` }}
+                {{ `${job.srcAdress.lineOne}, ${job.srcAdress.street} ${job.srcAdress.streetNumber}, ${job.srcAdress.zip} ${job.srcAdress.town} -> ${job.dstAdress.lineOne}, ${job.dstAdress.street} ${job.dstAdress.streetNumber}, ${job.dstAdress.zip} ${job.dstAdress.town}` }}
               </v-list-item-subtitle>
               <v-list-item-subtitle class="mt-2">
                 {{ job.description }}

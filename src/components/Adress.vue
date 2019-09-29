@@ -19,7 +19,7 @@
     </v-row>
     <v-row>
       <v-col>
-        <v-text-field v-model="value.plz"
+        <v-text-field v-model="value.zip"
                       label="Plz"
                       number
                       required/>

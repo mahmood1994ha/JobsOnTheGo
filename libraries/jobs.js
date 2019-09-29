@@ -21,7 +21,7 @@ const mapJobData = function (data) {
       lineOne: data.srcAddressLine,
       street: data.srcStreet,
       streetNumber: data.srcStreetNo,
-      plz: data.srcZIP,
+      zip: data.srcZIP,
       town: data.srcCity,
       lat: data.lsrcLat,
       lon: data.lsrcLong
@@ -30,7 +30,7 @@ const mapJobData = function (data) {
       lineOne: data.dstAddressLine,
       street: data.dstStreet,
       streetNumber: data.dstStreetNo,
-      plz: data.dstZIP,
+      zip: data.dstZIP,
       town: data.dstCity,
       lat: data.ldstLat,
       lon: data.ldstLong

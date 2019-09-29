@@ -1,5 +1,6 @@
 export default function init() {
   const API_KEY = process.env.VUE_APP_GOOGLE_MAPS_API_KEY
+  console.log('API_KEY: ', API_KEY)
   const CALLBACK_NAME = 'gmapsCallback'
 
   let resolveInitPromise
