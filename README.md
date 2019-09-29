@@ -8,7 +8,6 @@ Posting simple jobs that need to be done in a day or two, finding someone who wi
 
 Connecting small job providers to fast job seekers.
 
-##commit
 
 ## Built with
 //TODO: lists the technologies you use and their purpose
@@ -30,7 +29,7 @@ When we take about smart cities we are trying to provide everything in a smart w
           * Tien: Background mostly on Electronics and IT. Speaks C/C++ and Java.
           * Mahmoud:
           * Konstantin:
-          * Jean: Background mostly on Embedded domain with C/C++ for Microcontrollers and some C# and Java for Desktop and Web applications. 
+          * Jean: Background mostly on Embedded domain with C/C++ for Microcontrollers and some C# for Desktop and Web applications. 
 
 
  Markup : * Bullet list
