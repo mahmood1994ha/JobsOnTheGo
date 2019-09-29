@@ -15,7 +15,7 @@
           class="self-start w-full p-3 cursor-pointer d-flex"
           @click="onLocationClicked(index)"
         >
-          <v-icon slot="icon" class="mr-2" :class="{ 'bg-green': location.isMain }">
+          <v-icon slot="icon" class="mr-2" :class="{ 'location-is-main text-green': location.isMain }">
             mdi-map-marker
           </v-icon>
 
@@ -149,8 +149,8 @@ export default {
       return {
         path:
           'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z',
-        fillColor: isMain ? colors.green : colors.black,
-        strokeColor: isMain ? colors.green : colors.black,
+        fillColor: isMain ? colors['teal'] : colors.black,
+        strokeColor: isMain ? colors['teal'] : colors.black,
         fillOpacity: 1,
         anchor: new window.google.maps.Point(12, 24),
         scale: 1.5
@@ -162,3 +162,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .location-is-main {
+    color: #38a89d;
+  }
+</style>

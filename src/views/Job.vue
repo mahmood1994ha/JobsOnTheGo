@@ -16,7 +16,10 @@
       </div>
       <div>{{ job.description }}</div>
 
-      <map-location class="mt-4" :locations="locations"></map-location>
+      <div class="d-flex justify-center">
+        <v-btn class="mt-4" color="primary" @click="requestGeoLocation">Request my position</v-btn>
+      </div>
+      <map-location :key="mapInstanceKey" class="mt-4" :locations="locations"></map-location>
     </v-card>
     <div class="d-flex justify-end mt-6">
       <v-btn large color="error" class="mr-4" @click="onBack">
@@ -32,6 +35,7 @@
 <script>
 import AdressLine from '../components/AdressLine'
 import MapLocation from '../components/MapLocation'
+import { getAPIGeolocation } from '../helpers/geolocation'
 
 export default {
   components: { AdressLine, MapLocation },
@@ -78,6 +82,8 @@ export default {
       //     isMain: false
       //   }*/
       // ]
+      usersGeolocation: null,
+      mapInstanceKey: 0
     }
   },
   computed: {
@@ -85,7 +91,11 @@ export default {
       return this.$store.state.currentJob
     },
     locations() {
-      return (this.job && [
+      const userPos = this.usersGeolocation
+        ? this.usersGeolocation
+        : null
+
+      const locations = (this.job && [
         {
           title: 'From',
           location: {
@@ -109,6 +119,10 @@ export default {
           isMain: false
         }
       ]) || []
+
+      userPos && locations.push(userPos)
+
+      return locations
     }
   },
   created() {
@@ -128,17 +142,25 @@ export default {
       await this.$store.dispatch('fetchAllJobs')
       this.$router.push({name: 'jobs'})
     },
-    requestGeoLocation() {
+    async requestGeoLocation() {
       if (navigator.geolocation) {
-        var startPos;
-        var geoSuccess = function(position) {
-          startPos = position;
-          document.getElementById('startLat').innerHTML = startPos.coords.latitude;
-          document.getElementById('startLon').innerHTML = startPos.coords.longitude;
-        };
-        navigator.geolocation.getCurrentPosition(geoSuccess);
+        const { data } = await getAPIGeolocation()
+        this.usersGeolocation = {
+          title: 'Your position',
+          location: {
+            lat: data.location.lat,
+            lng: data.location.lng,
+            addressLineOne: '',
+            zipcode: '',
+            city: ''
+          },
+          isMain: true
+        }
+        this.mapInstanceKey++
+
+        console.log('geolocationResult: ', data)
       } else {
-        alert('Geolocation is not supported for this Browser/OS.');
+        this.$store.dispatch('addNotification', { message: 'Geolocation is not supported for this Browser/OS.', type: 'warning' });
       }
     }
   }
