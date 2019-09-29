@@ -23,7 +23,7 @@ public class BackendController {
 	ArrayList<User> userList = new ArrayList<User>();
 	private static final String template = "%s";
 
-	@CrossOrigin(origins = "http://10.4.1.130:8080")
+	@CrossOrigin(origins = "*")
 	@RequestMapping("/createjob")
 	public String createJob(@RequestParam(value = "src_street") String srcStreet,
 			@RequestParam(value = "src_no") int srcStreetNo, 
