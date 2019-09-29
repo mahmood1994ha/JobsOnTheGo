@@ -1,5 +1,4 @@
 # Jobs On The Go Repository
-This is a template, please fill it with your teams data. Places to fill in data are marked with a //TODO. If you fail to do so, our jury can't evaluate your project. 
 
 ## Description 
 Simply our idea is to make it easy for everyone to make their deliverables more easier. So basically starting form delivering packagies, food or helping people in delivering stuff or transporting them.
@@ -11,7 +10,10 @@ Connecting small job providers to fast job seekers.
 ##commit
 
 ## Built with
-//TODO: lists the technologies you use and their purpose
+- Java
+- Spring Framework 5
+- Google Geodecoding API
+
 
 ## What benefit will your work bring in smart city context?
 
@@ -24,18 +26,13 @@ When we take about smart cities we are trying to provide everything in a smart w
 //TODO: describe challenges you encountered and how you solved them. also name your lessons learned
 
 ## About your team
-//TODO: describe each team member with their background knowledge
- Markup : * Ahmed Yasser:
-          * Tien:
-          * Mahmoud:
-          * Konstantin:
-          * Jean: Background mostly on Embedded domain with C/C++ for Microcontrollers and some C# and Java for Desktop and Web applications. 
+//TODO: describe each team member with their background knowledge  
+Ahmed Yasser:   
+Tien :    
+Mahmoud:  
+Konstantin:   
+Jean: Background mostly on Embedded domain with C/C++ for Microcontrollers and some C# for Desktop and Web applications.    
 
-
- Markup : * Bullet list
-              * Nested bullet
-                  * Sub-nested bullet etc
-          * Bullet list item 2
 ## What's next for your project?
 
 We would really like to extend the app to be not only for deliviring stuff but also for helping people in transporting stuff, or any small help they need. any kind of help or small job.
