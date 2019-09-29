@@ -39,26 +39,26 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Preview
 
-#####home screen
+#### home screen
 
 ![alt text](https://raw.githubusercontent.com/dohack-io/JobsOnTheGo/frontend/frontend/public/Home.PNG)
 
-#####register form
+#### register form
 
 ![alt text](https://raw.githubusercontent.com/dohack-io/JobsOnTheGo/frontend/frontend/public/register.PNG)
 
-#####job details page with google maps and direction instruction for the route
+#### job details page with google maps and direction instruction for the route
 
 ![alt text](https://raw.githubusercontent.com/dohack-io/JobsOnTheGo/frontend/frontend/public/jobDetailsWithGoogleMapsDirections.PNG)
 
-#####overview page with all available jobs
+#### overview page with all available jobs
 
 ![alt text](https://raw.githubusercontent.com/dohack-io/JobsOnTheGo/frontend/frontend/public/alljobs.PNG)
 
-#####create job page
+#### create job page
 
 ![alt text](https://raw.githubusercontent.com/dohack-io/JobsOnTheGo/frontend/frontend/public/createajob.PNG)
 
-#####navigation
+#### navigation
 
 ![alt text](https://raw.githubusercontent.com/dohack-io/JobsOnTheGo/frontend/frontend/public/navigation.PNG)
