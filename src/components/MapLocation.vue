@@ -102,7 +102,7 @@ export default {
           position: { lat: loc.location.lat, lng: loc.location.lng },
           map: this.map,
           animation: window.google.maps.Animation.DROP,
-          icon: this.getColoredIcon(loc.isMain)
+          icon: this.getColoredIcon(loc.isMain, loc.isRouteWaypoint)
         })
 
         // make markers clickable
@@ -127,6 +127,56 @@ export default {
           window.google.maps.event.removeListener(listener)
         }
       )
+
+      // render the route lines
+      const directionsService = new window.google.maps.DirectionsService()
+      const directionsDisplay = new window.google.maps.DirectionsRenderer({
+        map: this.map,
+        preserveViewport: true
+      })
+      directionsService.route(
+        {
+          origin: new window.google.maps.LatLng(this.locations[0].location.lat, this.locations[0].location.lng),
+          destination: new window.google.maps.LatLng(this.locations[1].location.lat, this.locations[1].location.lng),
+          // waypoints: [
+          //   {
+          //     stopover: false,
+          //     location: new window.google.maps.LatLng(51.263439, 1.03489)
+          //   }
+          // ],
+          travelMode: window.google.maps.TravelMode.DRIVING
+        },
+        function(response, status) {
+          if (status === window.google.maps.DirectionsStatus.OK) {
+            directionsDisplay.setDirections(response);
+            const polyline = new window.google.maps.Polyline({
+              path: [],
+              strokeColor: '#0000FF',
+              strokeWeight: 3
+            })
+            const bounds = new window.google.maps.LatLngBounds()
+
+            const legs = response.routes[0].legs
+            let i = 0,
+                j = 0,
+                k = 0
+            for (i = 0; i < legs.length; i++) {
+              const steps = legs[i].steps
+              for (j = 0; j < steps.length; j++) {
+                const nextSegment = steps[j].path
+                for (k = 0; k < nextSegment.length; k++) {
+                  polyline.getPath().push(nextSegment[k])
+                  bounds.extend(nextSegment[k])
+                }
+              }
+            }
+
+            polyline.setMap(this.map)
+          } else {
+            console.error(`Directions request failed due to ${status}`)
+          }
+        }
+      )
     },
     setMarkerZoomBounds() {
       if (this.completeLocations.length) {
@@ -145,13 +195,14 @@ export default {
       }
     },
     // create location_on icon from svg path to color them differently for main and normal location
-    getColoredIcon(isMain) {
+    getColoredIcon(isMain, isRouteWaypoint) {
       return {
         path:
           'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z',
         fillColor: isMain ? colors['teal'] : colors.black,
         strokeColor: isMain ? colors['teal'] : colors.black,
-        fillOpacity: 1,
+        fillOpacity: isRouteWaypoint ? 0 : 1,
+        strokeOpacity: isRouteWaypoint ? 0 : 1,
         anchor: new window.google.maps.Point(12, 24),
         scale: 1.5
       }

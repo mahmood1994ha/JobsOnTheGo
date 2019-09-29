@@ -1,6 +1,9 @@
 # DeliverOnTheGo
 
-##About
+## live Demo
+[http://deliver-on-the-go.surge.sh](http://deliver-on-the-go.surge.sh)
+
+## About
 DeliverOnTheGo is an mobile PWA app that enables people to offer small jobs like transportation of food, renovation help, buying and transporting groceries.
 Other people you are on close to the positions of the job can accept a job and e.g. make the delivery.
 The money is locked while the job ad is active and will be transferred as soon as the job issuer receives his delivery.

@@ -105,7 +105,8 @@ export default {
             zipcode: this.job.srcAdress.zip,
             city: this.job.srcAdress.town
           },
-          isMain: false
+          isMain: false,
+          isRouteWaypoint: true
         },
         {
           title: 'To',
@@ -116,7 +117,8 @@ export default {
             zipcode: this.job.dstAdress.zip,
             city: this.job.dstAdress.town
           },
-          isMain: false
+          isMain: false,
+          isRouteWaypoint: true
         }
       ]) || []
 
